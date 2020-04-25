@@ -1,0 +1,20 @@
+{
+  "name": "emails-input",
+  "version": "0.1.0",
+  "description": "Emails input component with no external dependencies",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riccardobevilacqua/emails-input.git"
+  },
+  "keywords": [],
+  "author": "Riccardo Bevilacqua <bevilacqua.riccardo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riccardobevilacqua/emails-input/issues"
+  },
+  "homepage": "https://github.com/riccardobevilacqua/emails-input#readme"
+}

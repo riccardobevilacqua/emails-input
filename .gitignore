@@ -1,0 +1,13 @@
+# dependencies
+node_modules
+
+# misc
+.DS_Store
+.vscode
+.idea
+*.swp
+*.orig
+*.log
+**/.npmrc
+*.txt
+.env
