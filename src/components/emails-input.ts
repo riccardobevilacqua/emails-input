@@ -26,13 +26,14 @@ export const EmailsInput = (
   const emailsNode = document.querySelector(`#${originalNode.id} .${baseClass}-list`);
 
   inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.code === 'Enter' || e.code === 'Comma') {
       const inputElement = (<HTMLInputElement>e.target);
+      const inputValue = inputElement.value.replace(',', '');
       const uniqueId = generateId();
 
       emailsNode.innerHTML += `
         <div class="email-block" data-key="${uniqueId}">
-          <div class="email-block-text">${inputElement.value} <span class="email-block-icon">&#10005;</span></div>
+          <div class="email-block-text">${inputValue} <span class="email-block-icon">&#10005;</span></div>
         </div>
       `;
 
