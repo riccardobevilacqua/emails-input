@@ -27,7 +27,9 @@ export const EmailsInput = (
     if (e.key === 'Enter') {
       const inputValue = (<HTMLInputElement>e.target).value;
       emailsNode.innerHTML += `
-        <span>${inputValue}</span>
+        <div class="email-block">
+          <div class="email-block-text">${inputValue} <span class="email-block-icon">&#10005;</span></div>
+        </div>
       `;
       (<HTMLInputElement>e.target).value = '';
     }

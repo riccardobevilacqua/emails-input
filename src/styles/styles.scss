@@ -43,6 +43,7 @@
 .email-block {
   background: rgba(102, 153, 255, 0.2);
   border-radius: 100px;
+  display: inline;
 }
 
 .email-block-text {
@@ -50,4 +51,10 @@
   line-height: 24px;
   text-align: right;
   color: #050038;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.email-block-icon {
+  cursor: pointer;
 }
