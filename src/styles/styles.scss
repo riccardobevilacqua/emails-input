@@ -3,5 +3,20 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 .emails-input {
-  font-family: 'Open Sans', sans
+  font-family: 'Open Sans', sans;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  max-width: 540px;
+  max-height: 300px;
+}
+
+.emails-input-button {
+  color: #FFFFFF;
+  background: #4262FF;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
 }
