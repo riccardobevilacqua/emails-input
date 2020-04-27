@@ -4,6 +4,8 @@ export interface EmailsInputProps {
   placeholder?: string;
 }
 
+export const generateId = () => Math.random().toString(36).substring(2) + Date.now().toString(36);
+
 export const EmailsInput = (
   {
     originalNode,
@@ -25,13 +27,24 @@ export const EmailsInput = (
 
   inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-      const inputValue = (<HTMLInputElement>e.target).value;
+      const inputElement = (<HTMLInputElement>e.target);
+      const uniqueId = generateId();
+
       emailsNode.innerHTML += `
-        <div class="email-block">
-          <div class="email-block-text">${inputValue} <span class="email-block-icon">&#10005;</span></div>
+        <div class="email-block" data-key="${uniqueId}">
+          <div class="email-block-text">${inputElement.value} <span class="email-block-icon">&#10005;</span></div>
         </div>
       `;
-      (<HTMLInputElement>e.target).value = '';
+
+      const iconNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block:last-child .email-block-icon`);
+
+      iconNode.addEventListener('click', e => {
+        e.preventDefault();
+        const emailblockNode = document.querySelector(`#${originalNode.id} [data-key="${uniqueId}"]`);
+        emailblockNode.remove();
+      });
+
+      inputElement.value = '';
     }
   });
 };
