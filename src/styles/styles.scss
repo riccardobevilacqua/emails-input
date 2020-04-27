@@ -19,6 +19,7 @@
   color: #FFFFFF;
   background: #4262FF;
   border-radius: 6px;
+  border: 1px solid #4262FF;
   font-size: 14px;
   line-height: 24px;
   text-align: center;
@@ -33,4 +34,20 @@
 
 .emails-input {
   border: 0;
+}
+
+.emails-input-list {
+  display: inline;
+}
+
+.email-block {
+  background: rgba(102, 153, 255, 0.2);
+  border-radius: 100px;
+}
+
+.email-block-text {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  color: #050038;
 }

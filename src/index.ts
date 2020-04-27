@@ -3,4 +3,4 @@ import './styles/styles.scss';
 
 const inputContainerNode = document.querySelector('#example01');
 
-EmailsForm(inputContainerNode, {});
+EmailsForm({ originalNode: inputContainerNode });

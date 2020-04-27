@@ -1,13 +1,14 @@
 import { EmailsInput } from './emails-input';
 
 export interface EmailsFormProps {
+  originalNode: Element;
   title?: string;
   baseClass?: string;
 }
 
 export const EmailsForm = (
-  originalNode: Element,
   {
+    originalNode,
     title = 'Share <strong>Board name</strong> with others',
     baseClass = 'emails-form'
   }: EmailsFormProps
@@ -25,5 +26,5 @@ export const EmailsForm = (
     </div>
   `;
 
-  EmailsInput(originalNode, {});
+  EmailsInput({ originalNode });
 };
