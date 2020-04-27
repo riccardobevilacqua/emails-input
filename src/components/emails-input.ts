@@ -1,24 +1,28 @@
 export interface EmailsInputProps {
-  title?: string;
   baseClass?: string;
+  placeholder?: string;
 }
 
 export const EmailsInput = (
-  inputContainerNode: Element,
+  originalNode: Element,
   {
-    title = 'Share <strong>Board name</strong> with others',
-    baseClass = 'emails-input'
+    baseClass = 'emails-input',
+    placeholder = 'add more people...'
   }: EmailsInputProps
-): void => {
+) => {
+  const inputContainerNode = document.querySelector(`#${originalNode.id} .emails-input-container`);
+
   inputContainerNode.innerHTML = `
-    <div class="${baseClass}">
-      <div class="${baseClass}-content">
-        <div class="${baseClass}-title">${title}</div>
-      </div>
-      <div class="${baseClass}-controls">
-        <button class="${baseClass}-button">Add email</button>
-        <button class="${baseClass}-button">Get emails count</button>
-      </div>
+    <div class="${baseClass}-box">
+      <input class="${baseClass}" type="email" name="email" placeholder="${placeholder}"></input>
     </div>
   `;
+
+  const inputNode = document.querySelector(`#${originalNode.id} [name="email"]`);
+
+  inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const inputValue = (<HTMLInputElement>e.target).value;
+    }
+  });
 };

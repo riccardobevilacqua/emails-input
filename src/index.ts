@@ -1,6 +1,6 @@
-import { EmailsInput } from './components/emails-input';
+import { EmailsForm } from './components/emails-form';
 import './styles/styles.scss';
 
-const inputContainerNode = document.querySelector('#emails-input-01');
+const inputContainerNode = document.querySelector('#example01');
 
-EmailsInput(inputContainerNode, {});
+EmailsForm(inputContainerNode, {});

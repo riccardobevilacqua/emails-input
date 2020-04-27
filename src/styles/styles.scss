@@ -2,7 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
-.emails-input {
+.emails-form {
   font-family: 'Open Sans', sans;
   background: #FFFFFF;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
@@ -11,7 +11,11 @@
   max-height: 300px;
 }
 
-.emails-input-button {
+.emails-form-content {
+  background: #F8F8F7;
+}
+
+.emails-form-button {
   color: #FFFFFF;
   background: #4262FF;
   border-radius: 6px;
@@ -19,4 +23,14 @@
   line-height: 24px;
   text-align: center;
   cursor: pointer;
+}
+
+.emails-input-box {
+  width: 100%;
+  min-height: 100px;
+  background: #FFFFFF;
+}
+
+.emails-input {
+  border: 0;
 }
