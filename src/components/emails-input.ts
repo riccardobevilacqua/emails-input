@@ -13,7 +13,7 @@ export const EmailsInput = (
     placeholder = 'add more people...'
   }: EmailsInputProps
 ) => {
-  const inputContainerNode = document.querySelector(`#${originalNode.id} .emails-input-container`);
+  const inputContainerNode = document.querySelector(`#${originalNode.id} .${baseClass}-container`);
 
   inputContainerNode.innerHTML = `
     <div class="${baseClass}-box">
@@ -53,8 +53,9 @@ export const EmailsInput = (
   };
 
   inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
+    e.preventDefault();
     e.stopPropagation();
-    if (e.code === 'Enter' || e.code === 'Comma') {
+    if (e.key === 'Enter' || e.key === ',') {
       addEmail(e);
     }
   });
