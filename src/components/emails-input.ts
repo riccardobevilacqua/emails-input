@@ -25,11 +25,11 @@ export const EmailsInput = (
   const inputNode = document.querySelector(`#${originalNode.id} [name="email"]`);
   const emailsNode = document.querySelector(`#${originalNode.id} .${baseClass}-list`);
 
-  inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
-    e.stopPropagation();
-    if (e.code === 'Enter' || e.code === 'Comma') {
-      const inputElement = (<HTMLInputElement>e.target);
-      const inputValue = inputElement.value.replace(',', '');
+  const addEmail = (e: KeyboardEvent | FocusEvent) => {
+    const inputElement = (<HTMLInputElement>e.target);
+    const inputValue = inputElement.value.replace(',', '');
+
+    if (inputValue && inputValue.length > 0) {
       const uniqueId = generateId();
 
       const emailBlock = document.createElement('div');
@@ -50,5 +50,16 @@ export const EmailsInput = (
 
       inputElement.value = '';
     }
+  };
+
+  inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
+    e.stopPropagation();
+    if (e.code === 'Enter' || e.code === 'Comma') {
+      addEmail(e);
+    }
+  });
+
+  inputNode.addEventListener('blur', (e: FocusEvent) => {
+    addEmail(e);
   });
 };
