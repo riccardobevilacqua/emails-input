@@ -4,7 +4,7 @@ export interface EmailsInputProps {
   placeholder?: string;
 }
 
-export const generateId = () => Math.random().toString(36).substring(2) + Date.now().toString(36);
+export const generateId = () => Math.random().toString(36).substring(2) + performance.now().toString(36);
 
 export const EmailsInput = (
   {
@@ -26,22 +26,25 @@ export const EmailsInput = (
   const emailsNode = document.querySelector(`#${originalNode.id} .${baseClass}-list`);
 
   inputNode.addEventListener('keyup', (e: KeyboardEvent) => {
+    e.stopPropagation();
     if (e.code === 'Enter' || e.code === 'Comma') {
       const inputElement = (<HTMLInputElement>e.target);
       const inputValue = inputElement.value.replace(',', '');
       const uniqueId = generateId();
 
-      emailsNode.innerHTML += `
-        <div class="email-block" data-key="${uniqueId}">
+      const emailBlock = document.createElement('div');
+      emailBlock.className = 'email-block';
+      emailBlock.setAttribute('data-key', uniqueId);
+      emailBlock.innerHTML = `
           <div class="email-block-text">${inputValue} <span class="email-block-icon">&#10005;</span></div>
-        </div>
       `;
+      emailsNode.appendChild(emailBlock);
 
-      const iconNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block:last-child .email-block-icon`);
+      const iconNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block[data-key="${uniqueId}"] .email-block-icon`);
 
-      iconNode.addEventListener('click', e => {
-        e.preventDefault();
-        const emailblockNode = document.querySelector(`#${originalNode.id} [data-key="${uniqueId}"]`);
+      iconNode.addEventListener('click', () => {
+        const emailblockNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block[data-key="${uniqueId}"]`);
+
         emailblockNode.remove();
       });
 
