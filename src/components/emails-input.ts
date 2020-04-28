@@ -45,7 +45,7 @@ export const EmailsInput = (
       iconNode.addEventListener('click', () => {
         const emailblockNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block[data-key="${uniqueId}"]`);
 
-        emailblockNode.remove();
+        emailblockNode.parentNode.removeChild(emailblockNode);
       });
 
       inputElement.value = '';
