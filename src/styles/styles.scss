@@ -48,6 +48,12 @@
   margin: 4px;
 }
 
+.email-block.is-invalid {
+  background: #FFFFFF;
+  border-bottom: 1px dashed #D92929;
+  border-radius: 0;
+}
+
 .email-block-text {
   font-size: 14px;
   line-height: 24px;

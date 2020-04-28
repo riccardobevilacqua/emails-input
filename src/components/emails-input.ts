@@ -4,7 +4,23 @@ export interface EmailsInputProps {
   placeholder?: string;
 }
 
+export interface Email {
+  id: string;
+  value: string;
+  isValid: boolean;
+}
+
 export const generateId = () => Math.random().toString(36).substring(2) + performance.now().toString(36);
+
+export const validateEmail = (input: string) => {
+  if (!input) {
+    return false;
+  }
+
+  const pattern = /[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}/gi;
+
+  return pattern.test(input);
+}
 
 export const EmailsInput = (
   {
@@ -13,6 +29,7 @@ export const EmailsInput = (
     placeholder = 'add more people...'
   }: EmailsInputProps
 ) => {
+  let emailsList: Email[] = [];
   const inputContainerNode = document.querySelector(`#${originalNode.id} .${baseClass}-container`);
 
   inputContainerNode.innerHTML = `
@@ -31,9 +48,16 @@ export const EmailsInput = (
 
     if (inputValue && inputValue.length > 0) {
       const uniqueId = generateId();
+      const isValid = validateEmail(inputValue);
+
+      emailsList.push({
+        id: uniqueId,
+        value: inputValue,
+        isValid
+      });
 
       const emailBlock = document.createElement('div');
-      emailBlock.className = 'email-block';
+      emailBlock.className = `email-block ${isValid ? '' : 'is-invalid'}`;
       emailBlock.setAttribute('data-key', uniqueId);
       emailBlock.innerHTML = `
           <div class="email-block-text">${inputValue} <span class="email-block-icon">&#10005;</span></div>
@@ -46,6 +70,12 @@ export const EmailsInput = (
         const emailblockNode = document.querySelector(`#${originalNode.id} .${baseClass}-list .email-block[data-key="${uniqueId}"]`);
 
         emailblockNode.parentNode.removeChild(emailblockNode);
+
+        const index = emailsList.findIndex(email => email.id === uniqueId);
+
+        if (index > -1) {
+          emailsList.splice(index, 1);
+        }
       });
 
       inputElement.value = '';
