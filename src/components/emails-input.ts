@@ -42,6 +42,8 @@ export const EmailsInput = (
   const inputNode = document.querySelector(`#${originalNode.id} [name="email"]`);
   const emailsNode = document.querySelector(`#${originalNode.id} .${baseClass}-list`);
 
+  const getValidEmailsCount = () => emailsList.filter(email => email.isValid).length;
+
   const handleAddEmail = (e: KeyboardEvent | FocusEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -95,6 +97,7 @@ export const EmailsInput = (
   inputNode.addEventListener('blur', handleAddEmail);
 
   return {
-    getEmails: () => emailsList
+    getEmails: () => emailsList,
+    getValidEmailsCount
   };
 };

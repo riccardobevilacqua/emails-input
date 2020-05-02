@@ -20,11 +20,16 @@ export const EmailsForm = (
         <div class="emails-input-container"></div>
       </div>
       <div class="${baseClass}-controls">
-        <button class="${baseClass}-button">Add email</button>
-        <button class="${baseClass}-button">Get emails count</button>
+        <button class="${baseClass}-button ${baseClass}-button__add-email">Add email</button>
+        <button class="${baseClass}-button ${baseClass}-button__emails-count">Get emails count</button>
       </div>
     </div>
   `;
 
-  EmailsInput({ originalNode });
+  const emailsInput = EmailsInput({ originalNode });
+
+  const getEmailsCountButtonNode = document.querySelector(`#${originalNode.id} .${baseClass}-button__emails-count`);
+  getEmailsCountButtonNode.addEventListener('click', () => {
+    alert(`Detected ${emailsInput.getValidEmailsCount()} valid emails.`);
+  });
 };
