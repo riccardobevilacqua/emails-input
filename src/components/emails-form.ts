@@ -26,10 +26,15 @@ export const EmailsForm = (
     </div>
   `;
 
+  const generateRandomEmail = () => Math.random().toString(36).substring(2,11) + '@sample.com';
+
   const emailsInput = EmailsInput({ originalNode });
 
   const getEmailsCountButtonNode = document.querySelector(`#${originalNode.id} .${baseClass}-button__emails-count`);
   getEmailsCountButtonNode.addEventListener('click', () => {
     alert(`Detected ${emailsInput.getValidEmailsCount()} valid emails.`);
   });
+
+  const addEmailButtonNode = document.querySelector(`#${originalNode.id} .${baseClass}-button__add-email`);
+  addEmailButtonNode.addEventListener('click', () => emailsInput.addEmail(generateRandomEmail()));
 };
