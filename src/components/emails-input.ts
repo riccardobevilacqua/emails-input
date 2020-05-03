@@ -53,8 +53,16 @@ export const EmailsInput = (
 
       addEmail(inputValue);
       inputElement.value = '';
-    }
+    } else if (e instanceof ClipboardEvent) {
+      const pastedText = (e.clipboardData || (window as any).clipboardData).getData('text/plain');
+      const emails = pastedText.replace(/\s/g, '').split(',');
 
+      emails.forEach((email: string) => {
+        if (email && email.length > 0) {
+          addEmail(email);
+        }
+      });
+    }
   };
 
   const addEmail = (email: string) => {
@@ -95,6 +103,8 @@ export const EmailsInput = (
   inputNode.addEventListener('keyup', handleAddEmail);
 
   inputNode.addEventListener('blur', handleAddEmail);
+
+  inputNode.addEventListener('paste', handleAddEmail);
 
   return {
     getEmails: () => emailsList,
