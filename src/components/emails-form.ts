@@ -6,13 +6,13 @@ export interface EmailsFormProps {
   baseClass?: string;
 }
 
-export const EmailsForm = (
+export function EmailsForm(
   {
     originalNode,
     title = 'Share <strong>Board name</strong> with others',
     baseClass = 'emails-form'
   }: EmailsFormProps
-): void => {
+) {
   originalNode.innerHTML = `
     <div class="${baseClass}">
       <div class="${baseClass}-content">
