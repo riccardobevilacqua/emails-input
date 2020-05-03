@@ -44,27 +44,6 @@ export const EmailsInput = (
 
   const getValidEmailsCount = () => emailsList.filter(email => email.isValid).length;
 
-  const handleAddEmail = (e: KeyboardEvent | FocusEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e instanceof FocusEvent || (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ','))) {
-      const inputElement = (<HTMLInputElement>e.target);
-      const inputValue = inputElement.value.replace(',', '');
-
-      addEmail(inputValue);
-      inputElement.value = '';
-    } else if (e instanceof ClipboardEvent) {
-      const pastedText = (e.clipboardData || (window as any).clipboardData).getData('text/plain');
-      const emails = pastedText.replace(/\s/g, '').split(',');
-
-      emails.forEach((email: string) => {
-        if (email && email.length > 0) {
-          addEmail(email);
-        }
-      });
-    }
-  };
-
   const addEmail = (email: string) => {
     if (email && email.length > 0) {
       const uniqueId = generateId();
@@ -95,6 +74,27 @@ export const EmailsInput = (
     
         if (index > -1) {
           emailsList.splice(index, 1);
+        }
+      });
+    }
+  };
+
+  const handleAddEmail = (e: KeyboardEvent | FocusEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e instanceof FocusEvent || (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ','))) {
+      const inputElement = (<HTMLInputElement>e.target);
+      const inputValue = inputElement.value.replace(',', '');
+
+      addEmail(inputValue);
+      inputElement.value = '';
+    } else if (e instanceof ClipboardEvent) {
+      const pastedText = (e.clipboardData || (window as any).clipboardData).getData('text/plain');
+      const emails = pastedText.replace(/\s/g, '').split(',');
+
+      emails.forEach((email: string) => {
+        if (email && email.length > 0) {
+          addEmail(email);
         }
       });
     }
