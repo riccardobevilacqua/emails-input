@@ -22,20 +22,20 @@ export const validateEmail = (input: string) => {
   return pattern.test(input);
 }
 
-export const EmailsInput = (
+export function EmailsInput(
   {
     originalNode,
     baseClass = 'emails-input',
     placeholder = 'add more people...'
   }: EmailsInputProps
-) => {
+) {
   let emailsList: Email[] = [];
   const inputContainerNode = document.querySelector(`#${originalNode.id} .${baseClass}-container`);
 
   inputContainerNode.innerHTML = `
     <div class="${baseClass}-box">
       <div class="${baseClass}-list"></div>
-      <input class="${baseClass}" type="email" name="email" placeholder="${placeholder}"></input>
+      <input class="${baseClass}" type="email" name="email" placeholder="${placeholder}" autocomplete="no"></input>
     </div>
   `;
 
