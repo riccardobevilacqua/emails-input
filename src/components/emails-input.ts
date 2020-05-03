@@ -107,6 +107,7 @@ export const EmailsInput = (
   inputNode.addEventListener('paste', handleAddEmail);
 
   return {
+    addEmail: (email: string) => addEmail(email),
     getEmails: () => emailsList,
     getValidEmailsCount
   };
