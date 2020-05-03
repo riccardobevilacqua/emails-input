@@ -79,7 +79,7 @@ export const EmailsInput = (
     }
   };
 
-  const handleAddEmail = (e: KeyboardEvent | FocusEvent) => {
+  const handleAddEmail = (e: KeyboardEvent | FocusEvent | ClipboardEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (e instanceof FocusEvent || (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ','))) {
