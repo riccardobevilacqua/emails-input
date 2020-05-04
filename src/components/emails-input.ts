@@ -100,6 +100,17 @@ export function EmailsInput(
     }
   };
 
+  const replaceEmails = (emails: string[]) => {
+    emailsNode.innerHTML = '';
+    emailsList = [];
+
+    emails.forEach((email: string) => {
+      if (email && email.length > 0) {
+        addEmail(email);
+      }
+    });
+  };
+
   inputNode.addEventListener('keyup', handleAddEmail);
 
   inputNode.addEventListener('blur', handleAddEmail);
@@ -109,6 +120,7 @@ export function EmailsInput(
   return {
     addEmail: (email: string) => addEmail(email),
     getEmails: () => emailsList,
-    getValidEmailsCount
+    getValidEmailsCount,
+    replaceEmails
   };
 };
