@@ -37,4 +37,8 @@ export function EmailsForm(
 
   const addEmailButtonNode = document.querySelector(`#${originalNode.id} .${baseClass}-button__add-email`);
   addEmailButtonNode.addEventListener('click', () => emailsInput.addEmail(generateRandomEmail()));
+
+  return {
+    setEmails: emailsInput.setEmails
+  }
 };

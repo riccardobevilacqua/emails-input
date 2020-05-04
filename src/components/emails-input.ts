@@ -100,7 +100,7 @@ export function EmailsInput(
     }
   };
 
-  const replaceEmails = (emails: string[]) => {
+  const setEmails = (emails: string[]) => {
     emailsNode.innerHTML = '';
     emailsList = [];
 
@@ -121,6 +121,6 @@ export function EmailsInput(
     addEmail: (email: string) => addEmail(email),
     getEmails: () => emailsList,
     getValidEmailsCount,
-    replaceEmails
+    setEmails
   };
 };
