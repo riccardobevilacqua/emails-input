@@ -21,7 +21,13 @@ EmailsInput comprises the following props:
 | `getValidEmailsCount` | `() => number` | Add an email to the list |
 | `setEmails` | `(emails: string[]) => void ` | Set all emails in the list. This operation *overwrites* completely the list. |
 
-## Tech stack
+## Browser Support
+
+| Chrome | Firefox | Safari | Edge | Internet Explorer 11 |
+| --- | --- | --- | --- | --- |
+| yes | yes | yes | yes | yes |
+
+## Tech Stack
 
 This projects has been developed using:
 
