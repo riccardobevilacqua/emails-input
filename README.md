@@ -21,8 +21,8 @@ EmailsInput comprises the following props:
 | `getEmails` | `() => Email[]` | Add an email to the list |
 | `getValidEmailsCount` | `() => number` | Add an email to the list |
 | `setEmails` | `(emails: string[]) => void ` | Set all emails in the list. This operation *overwrites* completely the list. |
-| `subscribe` | `(elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => void` | Subscribe to emails list update |
-| `unsubscribe` | `(elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => void` | Unsubscribe from emails list update |
+| `subscribe` | `(cb: (e: CustomEvent) => void) => void` | Subscribe to emails list update |
+| `unsubscribe` | `(cb: (e: CustomEvent) => void) => void` | Unsubscribe from emails list update |
 
 ## Browser Support
 
