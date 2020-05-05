@@ -2,6 +2,7 @@ export interface EmailsInputProps {
   originalNode: Element;
   baseClass?: string;
   placeholder?: string;
+  subscribeEventName?: string;
 }
 
 export interface Email {
@@ -42,7 +43,8 @@ export function EmailsInput(
   {
     originalNode,
     baseClass = 'emails-input',
-    placeholder = 'add more people...'
+    placeholder = 'add more people...',
+    subscribeEventName = 'emailsListUpdate'
   }: EmailsInputProps
 ) {
   let emailsList: Email[] = [];
@@ -131,21 +133,15 @@ export function EmailsInput(
   };
 
   const sendUpdate = () => {
-    dispatchEventAgnostic(emailsNode as HTMLElement, 'emailsUpdate', emailsList);
+    dispatchEventAgnostic(emailsNode as HTMLElement, subscribeEventName, emailsList);
   }
 
-  const subscribe = (elem: HTMLElement) => {
-    elem.addEventListener('emailsUpdate', handleSubscribe);
+  const subscribe = (elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => {
+    elem.addEventListener(subscribeEventName, cb);
   }
 
-  const handleSubscribe = (e: CustomEvent<any>) => {
-    if (e && e.detail) {
-      e.detail;
-    }
-  };
-
-  const unsubscribe = (elem: HTMLElement) => {
-    elem.removeEventListener('emailsUpdate', handleSubscribe);
+  const unsubscribe = (elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => {
+    elem.removeEventListener(subscribeEventName, cb);
   };
 
   inputNode.addEventListener('keyup', handleAddEmail);
