@@ -133,15 +133,15 @@ export function EmailsInput(
   };
 
   const sendUpdate = () => {
-    dispatchEventAgnostic(emailsNode as HTMLElement, subscribeEventName, emailsList);
+    dispatchEventAgnostic(inputContainerNode as HTMLElement, subscribeEventName, emailsList);
   }
 
-  const subscribe = (elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => {
-    elem.addEventListener(subscribeEventName, cb);
+  const subscribe = (cb: (e: CustomEvent<any>) => void) => {
+    inputContainerNode.addEventListener(subscribeEventName, cb);
   }
 
-  const unsubscribe = (elem: HTMLElement, cb: (e: CustomEvent<any>) => void) => {
-    elem.removeEventListener(subscribeEventName, cb);
+  const unsubscribe = (cb: (e: CustomEvent<any>) => void) => {
+    inputContainerNode.removeEventListener(subscribeEventName, cb);
   };
 
   inputNode.addEventListener('keyup', handleAddEmail);

@@ -39,6 +39,8 @@ export function EmailsForm(
   addEmailButtonNode.addEventListener('click', () => emailsInput.addEmail(generateRandomEmail()));
 
   return {
-    setEmails: emailsInput.setEmails
+    setEmails: emailsInput.setEmails,
+    subscribe: emailsInput.subscribe,
+    unsubscribe: emailsInput.unsubscribe
   }
 };
