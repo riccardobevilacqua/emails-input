@@ -20,7 +20,23 @@ export const validateEmail = (input: string) => {
   const pattern = /[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}/gi;
 
   return pattern.test(input);
-}
+};
+
+export const dispatchEventAgnostic = <T extends HTMLElement | Window>(
+  elem: T,
+  eventName: string,
+  detail: any
+) => {
+  let event: CustomEvent<any>;
+  if (typeof window.CustomEvent === "function") {
+    event = new CustomEvent(eventName, { detail });
+  } else {
+    event = document.createEvent("CustomEvent");
+    event.initCustomEvent(eventName, true, false, { detail });
+  }
+
+  elem.dispatchEvent(event);
+};
 
 export function EmailsInput(
   {
