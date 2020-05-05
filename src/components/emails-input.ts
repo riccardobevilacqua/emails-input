@@ -90,8 +90,11 @@ export function EmailsInput(
     
         if (index > -1) {
           emailsList.splice(index, 1);
+          sendUpdate();
         }
       });
+
+      sendUpdate();
     }
   };
 
@@ -127,6 +130,24 @@ export function EmailsInput(
     });
   };
 
+  const sendUpdate = () => {
+    dispatchEventAgnostic(emailsNode as HTMLElement, 'emailsUpdate', emailsList);
+  }
+
+  const subscribe = (elem: HTMLElement) => {
+    elem.addEventListener('emailsUpdate', handleSubscribe);
+  }
+
+  const handleSubscribe = (e: CustomEvent<any>) => {
+    if (e && e.detail) {
+      e.detail;
+    }
+  };
+
+  const unsubscribe = (elem: HTMLElement) => {
+    elem.removeEventListener('emailsUpdate', handleSubscribe);
+  };
+
   inputNode.addEventListener('keyup', handleAddEmail);
 
   inputNode.addEventListener('blur', handleAddEmail);
@@ -137,6 +158,8 @@ export function EmailsInput(
     addEmail: (email: string) => addEmail(email),
     getEmails: () => emailsList,
     getValidEmailsCount,
-    setEmails
+    setEmails,
+    subscribe,
+    unsubscribe
   };
 };
