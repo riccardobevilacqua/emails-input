@@ -15,9 +15,11 @@ export function EmailsForm(
 ) {
   originalNode.innerHTML = `
     <div class="${baseClass}">
-      <div class="${baseClass}-content">
-        <div class="${baseClass}-title">${title}</div>
-        <div class="emails-input-container"></div>
+      <div class="${baseClass}-content-container">
+        <div class="${baseClass}-content">
+          <div class="${baseClass}-title">${title}</div>
+          <div class="emails-input-container"></div>
+        </div>
       </div>
       <div class="${baseClass}-controls">
         <button class="${baseClass}-button ${baseClass}-button__add-email">Add email</button>
