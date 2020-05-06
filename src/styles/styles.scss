@@ -32,6 +32,10 @@ body {
   margin-bottom: 24px;
 }
 
+.emails-form-controls {
+  margin: 24px 50px 32px;
+}
+
 .emails-form-button {
   color: #FFFFFF;
   background: #4262FF;
@@ -41,6 +45,8 @@ body {
   line-height: 24px;
   text-align: center;
   cursor: pointer;
+  padding: 8px 16px;
+  margin-right: 16px;
 }
 
 .emails-input-box {
@@ -77,10 +83,10 @@ body {
 .email-block-text {
   font-size: 14px;
   line-height: 24px;
-  text-align: right;
   color: #050038;
   margin-left: 10px;
   display: inline-block;
+  height: 24px;
 }
 
 .email-block-icon {
