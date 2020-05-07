@@ -2,6 +2,8 @@
 
 Zero dependencies emails input component.
 
+Demo with examples available [here](https://practical-raman-10f32a.netlify.app/).
+
 ## Props
 
 EmailsInput comprises the following props:
