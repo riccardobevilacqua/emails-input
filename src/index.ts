@@ -27,7 +27,7 @@ const subscriptionHandler = (e: CustomEvent) => {
     const subscriptionBox = document.querySelector('#example03SubscriptionBox');
     subscriptionBox.innerHTML = '';
     e.detail.forEach((item: any) => {
-      const emailEntry = document.createElement('div');
+      const emailEntry = document.createElement('li');
       emailEntry.innerHTML = item.value;
       subscriptionBox.appendChild(emailEntry);
     });
