@@ -48,6 +48,11 @@
   margin-right: 16px;
 }
 
+.emails-input-container {
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
 .emails-input-box {
   width: 100%;
   min-height: 100px;
