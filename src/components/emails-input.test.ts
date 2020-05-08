@@ -1,6 +1,11 @@
 import { EmailsInput, Email } from './emails-input';
 
 describe('Emails Input', () => {
+  const emails = [
+    'max@mail.ru',
+    'ivan@mail.ru',
+    'riccardo@mail.it'
+  ];
   let component: any;
 
   beforeAll(() => {
@@ -19,12 +24,6 @@ describe('Emails Input', () => {
   });
 
   test('should set and get emails', () => {
-    const emails = [
-      'max@mail.ru',
-      'ivan@mail.ru',
-      'riccardo@mail.it'
-    ];
-
     component.setEmails(emails);
 
     expect(component.getEmails().length).toBe(emails.length);
@@ -48,12 +47,6 @@ describe('Emails Input', () => {
   });
 
   test('should subscribe and unsubscribe to emails update', () => {
-    const emails = [
-      'max@mail.ru',
-      'ivan@mail.ru',
-      'riccardo@mail.it'
-    ];
-
     const subscriptionHandler = (e: CustomEvent) => {
       if (e && e.detail) {
         e.detail.forEach((email: Email, index: number) => {
