@@ -20,8 +20,8 @@ EmailsInput comprises the following props:
 | Method | Signature | Description |
 | --- | --- | --- |
 | `addEmail` | `(email: string) => void` | Add an email to the list |
-| `getEmails` | `() => Email[]` | Add an email to the list |
-| `getValidEmailsCount` | `() => number` | Add an email to the list |
+| `getEmails` | `() => Email[]` | Get emails list |
+| `getValidEmailsCount` | `() => number` | Get valid emails count |
 | `setEmails` | `(emails: string[]) => void ` | Set all emails in the list. This operation *overwrites* completely the list. |
 | `subscribe` | `(cb: (e: CustomEvent) => void) => void` | Subscribe to emails list update |
 | `unsubscribe` | `(cb: (e: CustomEvent) => void) => void` | Unsubscribe from emails list update |
